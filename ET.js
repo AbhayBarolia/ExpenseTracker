@@ -28,8 +28,10 @@ let obj= {
     desc:document.getElementById('desc').value,
     category:document.getElementById('category').value,    
 };
+
 let i=count;
 let ls=JSON.stringify(obj);
+axios.post("https://crudcrud.com/api/a67dbf06587f4775bda035004815effe/ExpenseTracker",obj).then((res)=>{console.log(res);}).catch((err)=>{console.log(err);});
 localStorage.setItem(i,ls);
 count++;
 }
@@ -47,6 +49,8 @@ function removeItem(e)
             let str1=str.toString().substring(0,4);
             localStorage.removeItem(Number(str1));
             list.removeChild(li);
+            axios.delete("https://crudcrud.com/api/a67dbf06587f4775bda035004815effe/ExpenseTracker/641621a222534003e8c8e5d8").then((res)=>{console.log(res);}).catch((err)=>{console.log(err);});
+            
         }
 
     }
@@ -64,6 +68,7 @@ function removeItem(e)
             document.getElementById('amount').value=obj.amount;
             document.getElementById('desc').value=obj.desc;
             document.getElementById('category').value=obj.category;
+            
         }
     }    
 
